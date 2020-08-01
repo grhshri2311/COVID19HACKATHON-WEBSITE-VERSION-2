@@ -1,0 +1,154 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5db89dca630c75580c7f4932/1575044822385-8TRPS51L6O5J2NWYCJ4H/ke17ZwdGBToddI8pDm48kAy9ij7NhvrgfrXDj12tieFZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7YIE3ZwwVlGd312yABb759EDDsZWIv4M_yy9fsfZKowcH08FZ-5-P-Aipy2pR0buMw/Bactivax+Advocacy+icon.png" type="image/icon type">
+        <title>COVID-19 RELIEF</title>
+          <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+
+
+</head>
+
+<body class="bg-dark">
+
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+
+                </div>
+                <div class="login-form">
+                    <form>
+                    <font color="red">  <h6 align="left" id="login_err" ></h6></font><br>
+                        <div class="form-group">
+                            <label>Email address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Email">
+                        </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" id="password" class="form-control" placeholder="Password">
+                        </div>
+                                <div class="checkbox">
+                                    <label>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                                    <label class="pull-right">
+                                <a href="#">Forgotten Password?</a>
+                            </label>
+
+                                </div>  <br>
+                                <button type="button" onclick="login();" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                          <br>  <br>
+                                <div class="register-link m-t-15 text-center">
+                                    <p>Don't have account ? <a href="register.html"> Sign Up Here</a></p>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  <script>
+  var firebaseConfig = {
+  apiKey: "AIzaSyB2UZQh44peqyPUuQuqOqI5Mqu88bktM8E",
+  authDomain: "covid19hackathon-website.firebaseapp.com",
+  databaseURL: "https://covid19hackathon-website.firebaseio.com",
+  projectId: "covid19hackathon-website",
+  storageBucket: "covid19hackathon-website.appspot.com",
+  messagingSenderId: "830987561613",
+  appId: "1:830987561613:web:9be88594bb8609b83710c4",
+  measurementId: "G-RMLHJ14Q2Z"
+  };
+  // Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+  firebase.auth().useDeviceLanguage();
+
+  firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+window.location.href="home.php";
+}
+  });
+
+  function login(){
+
+    document.getElementById("login_err").innerHTML = "";
+    var password=document.getElementById('password').value;
+    var email=document.getElementById('email').value;
+
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+    {
+    }
+    else {
+        document.getElementById("login_err").innerHTML = "Invalid Email";
+      return;
+    }
+
+
+    firebase.database().ref('users/' + email.substr(0,email.indexOf('@'))).once('value').then(function(snapshot) {
+      if(snapshot.val()!=null){
+        var user=snapshot.val();
+        if(user.password!=password){
+          document.getElementById("login_err").innerHTML = "Incorrect password";
+        }
+        else{
+          window.localStorage.setItem('phone', user.phone);
+          window.localStorage.setItem('name', user.name);
+          window.localStorage.setItem('role', user.role);
+          window.localStorage.setItem('state', user.state);
+            window.localStorage.setItem('email', email.substr(0,email.indexOf('@')));
+            firebase.auth().signInWithEmailAndPassword(email, password)
+  .then(function(result) {
+    location.href="home.php";
+  }).catch(function(error) {
+
+  });
+
+        }
+      }
+      else{
+          document.getElementById("login_err").innerHTML = "Email not exist";
+      }
+
+  });
+  }
+
+  </script>
+
+
+</body>
+
+</html>

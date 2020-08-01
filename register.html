@@ -1,0 +1,274 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="https://images.squarespace-cdn.com/content/v1/5db89dca630c75580c7f4932/1575044822385-8TRPS51L6O5J2NWYCJ4H/ke17ZwdGBToddI8pDm48kAy9ij7NhvrgfrXDj12tieFZw-zPPgdn4jUwVcJE1ZvWhcwhEtWJXoshNdA9f1qD7YIE3ZwwVlGd312yABb759EDDsZWIv4M_yy9fsfZKowcH08FZ-5-P-Aipy2pR0buMw/Bactivax+Advocacy+icon.png" type="image/icon type">
+        <title>COVID-19 RELIEF</title>
+           <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+    <link rel="stylesheet" href="vendors/chosen/chosen.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+
+    <link rel="stylesheet" href="vendors/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendors/themify-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
+
+
+</head>
+
+<body class="bg-dark">
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+
+                </div>
+                <div class="login-form">
+                    <form>
+                      <h6 align="left" id="otp" ><font color="red"></h6><br>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Full Name">
+                        </div>
+                            <div class="form-group">
+                                <label>Email address</label>
+                                <input type="email" id="email" class="form-control" placeholder="Email">
+                        </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" id="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile</label>
+                            <input type="number" class="form-control" id="mobile" placeholder="Mobile">
+                </div>
+
+                <div class="card-body" >
+
+                    <select id="role" data-placeholder="Choose your role..." class="standardSelect1" tabindex="1">
+                        <option value=""></option>
+                        <option value="monitors">monitors</option>
+                  <option value="volunteers">volunteers</option>
+                  <option value="labour">labour</option>
+                  <option value="healthworker">healthworker</option>
+                  <option value="counsellor">counsellor</option>
+                  <option value="stranded_migrant">stranded_migrant</option>
+                  <option value="workers">workers</option>
+                  <option value="orphan">orphan</option>
+                  <option value="general">general</option>
+
+                    </select>
+                </div>
+                    <div class="card-body" >
+
+                        <select id="state" data-placeholder="Choose a State..." class="standardSelect" tabindex="1">
+                            <option value=""></option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Dadra and Nagar Haveli ">Dadra and Nagar Haveli </option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+                            <option value="Ladakh">Ladakh</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Puducherry">Puducherry</option>
+
+                        </select>
+                    </div>
+
+                                    <div class="checkbox">
+                                        <label>
+                                <input type="checkbox"> Agree the terms and policy
+                            </label>
+                                    </div>
+                                    <button type="button" onclick="register();" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+
+                                    <div class="register-link m-t-15 text-center">
+                                        <p>Already have account ? <a href="login.html"> Sign in</a></p>
+                                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+
+<script>
+var firebaseConfig = {
+apiKey: "AIzaSyB2UZQh44peqyPUuQuqOqI5Mqu88bktM8E",
+authDomain: "covid19hackathon-website.firebaseapp.com",
+databaseURL: "https://covid19hackathon-website.firebaseio.com",
+projectId: "covid19hackathon-website",
+storageBucket: "covid19hackathon-website.appspot.com",
+messagingSenderId: "830987561613",
+appId: "1:830987561613:web:9be88594bb8609b83710c4",
+measurementId: "G-RMLHJ14Q2Z"
+};
+// Initialize Firebase
+
+firebase.initializeApp(firebaseConfig);
+firebase.auth().useDeviceLanguage();
+
+function register() {
+    document.getElementById("otp").innerHTML = "";
+  var name=document.getElementById('name').value;
+  var password=document.getElementById('password').value;
+  var email=document.getElementById('email').value;
+  var mobile=document.getElementById('mobile').value;
+  var role=document.getElementById('role').value;
+  var state=document.getElementById('state').value;
+
+  if(name=="" || password=="" || email=="" || mobile=="" || role=="select" || state=="select"){
+    document.getElementById("otp").innerHTML = "Please fill all the fields";
+    document.getElementById("otp").focus();
+    document.getElementById("otp").style.display="block";
+  return;
+}
+
+
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+  {
+  }
+  else {
+    document.getElementById("otp").innerHTML = "Invalid email address";
+    document.getElementById("otp").focus();
+    return;
+  }
+
+  if (password.match(/[a-z]/g) && password.match(
+                     /[A-Z]/g) && password.match(
+                     /[0-9]/g) && password.match(
+                     /[^a-zA-Z\d]/g) && password.length >= 8)
+        {}
+             else{
+               document.getElementById("otp").innerHTML = "Password Must contain atleast One Uppercase ,<br>One Lowercase ,<br>One Number ,<br>One Special character and <br> Between 8 to 16 letter length";
+               document.getElementById("otp").focus();
+               return;
+             }
+
+  if(mobile.length<10)
+  {
+    document.getElementById("otp").innerHTML = "Invalid mobile number";
+    document.getElementById("otp").focus();
+    return;
+  }
+  var actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be whitelisted in the Firebase Console.
+    url: 'http://localhost/home.php',
+    // This must be true.
+    handleCodeInApp: true,
+
+  };
+
+  firebase.auth().sendSignInLinkToEmail(email, actionCodeSettings)
+  .then(function() {
+
+    window.localStorage.setItem('email1', email.substr(0,email.indexOf('@')));
+    window.localStorage.setItem('email2', email.substr(email.indexOf('@')));
+    window.localStorage.setItem('phone', mobile);
+    window.localStorage.setItem('name', name);
+    window.localStorage.setItem('password', password);
+    window.localStorage.setItem('role', role);
+    window.localStorage.setItem('state', state);
+
+    document.getElementById("otp").innerHTML = "confirmation email has been sent to your email";
+
+  })
+  .catch(function(error) {
+    // Some error occurred, you can inspect the code: error.code
+  });
+
+}
+
+</script>
+
+<script src="vendors/jquery/dist/jquery.min.js"></script>
+<script src="vendors/popper.js/dist/umd/popper.min.js"></script>
+<script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="vendors/chosen/chosen.jquery.min.js"></script>
+
+<script>
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
+        });
+    });
+    jQuery(document).ready(function() {
+        jQuery(".standardSelect1").chosen({
+            disable_search_threshold: 10,
+            no_results_text: "Oops, nothing found!",
+            width: "100%"
+        });
+    });
+</script>
+
+</body>
+
+</html>
